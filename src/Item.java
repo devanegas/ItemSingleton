@@ -15,13 +15,11 @@ public class Item {
     }
 
     public static Item getInstance() {
-        synchronized (Item.class){
-            return getNextInstance();
-        }
+        return getNextInstance();
     }
 
 
-    private static Item getNextInstance(){
+    private synchronized static Item getNextInstance(){
         if(parity == 0){
             Items = new Vector<Item>();
             Items.add(new Item("First"));
